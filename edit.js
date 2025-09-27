@@ -1,26 +1,42 @@
-// edit.js
-document.getElementById('create-form').addEventListener('submit', async (e) => {
-  e.preventDefault();
+// Quill 初期化
+const quill = new Quill('#editor', {
+  theme: 'snow',
+  modules: {
+    toolbar: [
+      [{ header: [1, 2, false] }],
+      ['bold', 'italic', 'underline'],
+      ['link', 'image'],
+      [{ list: 'ordered' }, { list: 'bullet' }],
+      ['clean']
+    ]
+  }
+});
 
-  const title = e.target.title.value.trim();
-  const content = e.target.content.value.trim();
+// プレビュー更新
+function updatePreview() {
+  const html = quill.root.innerHTML;
+  document.getElementById('infoContent').innerHTML = html;
 
-  if (!title || !content) {
-    alert('タイトルと内容を入力してください');
+  // タイトルに画像URLが含まれていたら差し替える簡易例
+  const img = quill.root.querySelector('img');
+  document.getElementById('infoImage').src = img ? img.src : 'https://placehold.co/300x200?text=Preview';
+}
+quill.on('text-change', updatePreview);
+
+// 保存処理（例：コンソール出力やAPI送信）
+document.getElementById('saveBtn').addEventListener('click', () => {
+  const title = document.getElementById('pageTitle').value.trim();
+  const content = quill.root.innerHTML;
+
+  if (!title) {
+    alert('タイトルを入力してください');
     return;
   }
 
-  try {
-    const { data, error } = await supabase
-      .from('articles')          // ← Supabase のテーブル名
-      .insert([{ title, content }]);
+  // ここでバックエンドや Supabase などに送信する処理を実装
+  console.log('---保存データ---');
+  console.log('タイトル:', title);
+  console.log('本文HTML:', content);
 
-    if (error) throw error;
-
-    alert('記事を作成しました！');
-    window.location.href = `view.html?title=${encodeURIComponent(title)}`;
-  } catch (err) {
-    console.error(err);
-    alert('作成中にエラーが発生しました');
-  }
+  alert('保存しました（デモ）');
 });
