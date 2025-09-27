@@ -1,53 +1,41 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>新規作成 - My Wiki</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>記事編集 - My Wiki</title>
+
+  <!-- Quill の CDN -->
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <div class="header-inner">
-      <a href="index.html" class="logo">My Wiki</a>
-      <form id="searchForm" action="search.html" method="get" style="display:inline;">
-        <input type="text" name="q" placeholder="検索">
-        <button type="submit">検索</button>
-      </form>
-    </div>
+    <h1>記事を作成・編集</h1>
   </header>
 
-  <main>
-    <aside class="sidebar">
-      <ul>
-        <li><a href="index.html">メインページ</a></li>
-        <li><a href="edit.html">新規作成</a></li>
-        <li><a href="search.html">検索</a></li>
-      </ul>
-    </aside>
+  <main class="edit-container">
+    <!-- 左：本文編集フォーム -->
+    <section class="edit-form">
+      <label for="pageTitle">タイトル</label>
+      <input id="pageTitle" type="text" placeholder="記事タイトルを入力" />
 
-    <section class="content">
-      <h1>新規ページ作成</h1>
-      <form id="create-form">
-        <label>
-          タイトル:
-          <input type="text" name="title" required>
-        </label><br><br>
-        <label>
-          内容:
-          <textarea name="content" rows="10" required></textarea>
-        </label><br><br>
-        <button type="submit">作成</button>
-      </form>
+      <label>本文</label>
+      <div id="editor"></div>
+
+      <button id="saveBtn">保存する</button>
     </section>
+
+    <!-- 右：インフォボックスプレビュー -->
+    <aside class="infobox-preview">
+      <h3>インフォボックス プレビュー</h3>
+      <img id="infoImage" src="https://placehold.co/300x200?text=Preview" alt="preview">
+      <div class="infobox-item" id="infoContent">ここに概要が表示されます</div>
+    </aside>
   </main>
 
-  <footer class="site-footer">
-    © 2025 My Wiki
-  </footer>
-
-  <!-- 記事作成を Supabase に送る JS -->
-  <script src="supabaseClient.js"></script>
+  <!-- Quill本体 -->
+  <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
   <script src="edit.js"></script>
 </body>
 </html>
