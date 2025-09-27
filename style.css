@@ -2,3 +2,16 @@ body{font-family:sans-serif;line-height:1.6;padding:1em;}
 @media (prefers-color-scheme: dark){
   body{background:#222;color:#eee;}
 }
+body {
+  font-family: sans-serif;
+  line-height: 1.6;
+  padding: 1em;
+}
+
+/* 端末やブラウザがダークモードの場合 */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #222;
+    color: #eee;
+  }
+}
