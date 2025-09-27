@@ -114,3 +114,27 @@ button#saveBtn:hover {
   .edit-container { flex-direction: column; }
   .infobox-preview { margin-top: 2rem; }
 }
+/* ===== 編集ページ用 ===== */
+.edit-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+}
+.edit-container form label {
+  display: block;
+  margin-bottom: 1rem;
+}
+.edit-container input[type="text"],
+.edit-container input[type="url"],
+.edit-container textarea {
+  width: 100%;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+.edit-container button {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
