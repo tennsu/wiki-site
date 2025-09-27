@@ -3,38 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Wiki - メインページ</title>
+  <title>My Wiki</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
+  <!-- ヘッダー -->
+  <header>
     <div class="header-inner">
-      <a href="index.html" class="logo-link">
-        <span class="site-title">My Wiki</span>
-      </a>
-      <form class="search-form" action="search.html">
+      <a href="index.html" class="logo">My Wiki</a>
+      <form id="searchForm" action="search.html" method="get" style="display:inline;">
         <input type="text" name="q" placeholder="検索">
         <button type="submit">検索</button>
       </form>
     </div>
   </header>
-  <div class="container">
+
+  <!-- メインコンテンツ -->
+  <main>
     <aside class="sidebar">
-      <nav>
-        <ul>
-          <li><a href="index.html">メインページ</a></li>
-          <li><a href="new.html">新規作成</a></li>
-          <li><a href="search.html">検索</a></li>
-        </ul>
-      </nav>
+      <ul>
+        <li><a href="index.html">メインページ</a></li>
+        <li><a href="edit.html">新規作成</a></li>
+        <li><a href="search.html">検索</a></li>
+      </ul>
     </aside>
-    <main class="content">
-      <h1>トップページ</h1>
-      <p>ここに記事の一覧や説明を入れます。</p>
-    </main>
-  </div>
+
+    <section class="content">
+      <h1>ようこそ My Wiki へ</h1>
+      <p>ここにメインページの内容を記載してください。</p>
+    </section>
+  </main>
+
+  <!-- フッター（最下部に固定） -->
   <footer class="site-footer">
-  © 2025 My Wiki
- </footer>
+    © 2025 My Wiki
+  </footer>
+
+  <!-- 必要ならJS -->
+  <script src="view_search_combined.js"></script>
 </body>
 </html>
