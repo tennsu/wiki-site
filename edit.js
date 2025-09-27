@@ -1,72 +1,43 @@
-import { supabase } from './supabaseClient.js';
-
-const params = new URLSearchParams(window.location.search);
-const articleId = params.get('id');
-
-const form = document.getElementById('editForm');
-const titleInput = document.getElementById('title');
-const infoInput = document.getElementById('infobox');
-const imageInput = document.getElementById('imageUrl');
-const message = document.getElementById('message');
-const infoboxPreview = document.getElementById('infoboxPreview');
-
-// Quill 初期化
+// Quill初期化
 const quill = new Quill('#quillEditor', {
   theme: 'snow',
   placeholder: '本文を入力してください…',
-  modules: { toolbar: [['bold', 'italic'], ['link', 'image'], [{ list: 'ordered' }, { list: 'bullet' }]] }
+  modules: {
+    toolbar: '#wikiToolbar'
+  }
 });
 
-// インフォボックス プレビュー更新
-infoInput.addEventListener('input', () => {
-  infoboxPreview.textContent = infoInput.value;
-});
+// インフォボックスのプレビュー
+const infoboxField = document.getElementById('infobox');
+const preview = document.getElementById('infoboxPreview');
 
-// 既存記事読み込み
-if (articleId) {
-  (async () => {
-    const { data, error } = await supabase
-      .from('articles')
-      .select('*')
-      .eq('id', articleId)
-      .single();
-    if (error) {
-      message.textContent = '記事の読み込みに失敗しました: ' + error.message;
-    } else if (data) {
-      titleInput.value = data.title;
-      infoInput.value = data.infobox || '';
-      quill.root.innerHTML = data.content;
-      imageInput.value = data.image_url || '';
-      infoboxPreview.textContent = data.infobox || '';
+function renderInfobox(jsonStr) {
+  try {
+    const data = JSON.parse(jsonStr);
+    let html = '<div class="infobox">';
+    for (const key in data) {
+      html += `<div class="info-row"><strong>${key}</strong>: ${data[key]}</div>`;
     }
-  })();
+    html += '</div>';
+    preview.innerHTML = html;
+  } catch {
+    preview.textContent = '有効なJSONを入力してください';
+  }
 }
 
-// 保存
-form.addEventListener('submit', async (e) => {
+infoboxField.addEventListener('input', () => renderInfobox(infoboxField.value));
+
+// 保存処理（Supabaseなどバックエンド連携はここに追加）
+document.getElementById('editForm').addEventListener('submit', async (e) => {
   e.preventDefault();
-  const title = titleInput.value.trim();
-  const content = quill.root.innerHTML; // HTMLとして保存
-  const infobox = infoInput.value.trim();
-  const imageUrl = imageInput.value.trim();
+  const title = document.getElementById('title').value.trim();
+  const bodyHtml = quill.root.innerHTML;
+  const infoJson = infoboxField.value;
 
-  let result;
-  if (articleId) {
-    result = await supabase.from('articles')
-      .update({ title, content, infobox, image_url: imageUrl })
-      .eq('id', articleId);
-  } else {
-    result = await supabase.from('articles')
-      .insert([{ title, content, infobox, image_url: imageUrl }]);
-  }
-
-  if (result.error) {
-    message.textContent = '保存エラー: ' + result.error.message;
-  } else {
-    message.textContent = '保存しました！';
-    if (!articleId) {
-      const newId = result.data[0].id;
-      window.location.href = `view.html?id=${newId}`;
-    }
-  }
+  // ここに保存処理を記述（例：Supabase insert/update）
+  console.log({ title, bodyHtml, infoJson });
+  alert('記事を保存しました（コンソールに出力）');
 });
+
+// ページ初期化時に既存データを読み込む場合
+// （例：URLパラメータidを使ってDBからfetch → quill.setContents(...) など）
