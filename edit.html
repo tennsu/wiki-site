@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>新規作成 - My Wiki</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo">My Wiki</a>
+      <form id="searchForm" action="search.html" method="get" style="display:inline;">
+        <input type="text" name="q" placeholder="検索">
+        <button type="submit">検索</button>
+      </form>
+    </div>
+  </header>
+
+  <main>
+    <aside class="sidebar">
+      <ul>
+        <li><a href="index.html">メインページ</a></li>
+        <li><a href="edit.html">新規作成</a></li>
+        <li><a href="search.html">検索</a></li>
+      </ul>
+    </aside>
+
+    <section class="content">
+      <h1>新規ページ作成</h1>
+      <form id="create-form">
+        <label>
+          タイトル:
+          <input type="text" name="title" required>
+        </label><br><br>
+        <label>
+          内容:
+          <textarea name="content" rows="10" required></textarea>
+        </label><br><br>
+        <button type="submit">作成</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    © 2025 My Wiki
+  </footer>
+
+  <!-- 記事作成を Supabase に送る JS -->
+  <script src="supabaseClient.js"></script>
+  <script src="edit.js"></script>
+</body>
+</html>
