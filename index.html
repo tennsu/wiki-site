@@ -1,45 +1,23 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>My Wiki</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- ヘッダー -->
   <header>
-    <div class="header-inner">
-      <a href="index.html" class="logo">My Wiki</a>
-      <form id="searchForm" action="search.html" method="get" style="display:inline;">
-        <input type="text" name="q" placeholder="検索">
-        <button type="submit">検索</button>
-      </form>
-    </div>
+    <h1>My Wiki</h1>
+    <nav>
+      <a href="edit.html">新規作成</a>
+      <a href="latest.html">最新記事</a><!-- ★追加 -->
+    </nav>
   </header>
 
-  <!-- メインコンテンツ -->
   <main>
-    <aside class="sidebar">
-      <ul>
-        <li><a href="index.html">メインページ</a></li>
-        <li><a href="edit.html">新規作成</a></li>
-        <li><a href="search.html">検索</a></li>
-      </ul>
-    </aside>
-
-    <section class="content">
-      <h1>ようこそ My Wiki へ</h1>
-      <p>ここにメインページの内容を記載してください。</p>
-    </section>
+    <p>ようこそ My Wiki へ。ここでは記事を自由に作成・閲覧できます。</p>
   </main>
 
-  <!-- フッター（最下部に固定） -->
-  <footer class="site-footer">
-    © 2025 My Wiki
-  </footer>
-
-  <!-- 必要ならJS -->
-  <script src="view_search_combined.js"></script>
+  <footer>&copy; 2025 My Wiki</footer>
 </body>
 </html>
