@@ -24,7 +24,7 @@ form {
   gap: 15px;
 }
 
-#title, textarea {
+#title {
   width: 100%;
   box-sizing: border-box;
   padding: 6px;
@@ -32,7 +32,7 @@ form {
 }
 
 #quillEditor {
-  height: 300px;
+  height: 350px;
   background: #fff;
   border: 1px solid #ccc;
 }
@@ -42,7 +42,6 @@ button[type="submit"] {
   font-size: 1em;
 }
 
-/* Wikipedia風ツールバー */
 #wikiToolbar {
   border: 1px solid #ccc;
   border-bottom: none;
@@ -53,7 +52,6 @@ button[type="submit"] {
   align-items: center;
 }
 
-/* インフォボックス */
 .infobox-preview {
   flex: 1;
   background: #fff;
