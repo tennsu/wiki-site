@@ -17,10 +17,6 @@
         <input type="text" id="title" required>
       </label>
 
-      <label>インフォボックス（JSON）<br>
-        <textarea id="infobox" rows="6" placeholder='{"name":"名称","desc":"説明"}'></textarea>
-      </label>
-
       <!-- Wikipedia風ツールバー -->
       <div id="wikiToolbar">
         <select class="ql-header">
@@ -47,7 +43,7 @@
     <!-- インフォボックスプレビュー -->
     <aside class="infobox-preview">
       <h2>インフォボックス プレビュー</h2>
-      <div id="infoboxPreview">ここにプレビューが表示されます</div>
+      <div id="infoboxPreview">本文内 {{infobox ...}} を解析して表示</div>
     </aside>
   </main>
 
