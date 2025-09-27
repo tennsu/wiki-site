@@ -1,84 +1,51 @@
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
-  font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
-  background: #f5f5f5;
-  color: #333;
+/* 全体の基本設定 */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
   line-height: 1.6;
+  background: #f5f5f5;       /* 全体の薄いグレー背景 */
+  color: #222;
+  display: flex;
+  flex-direction: column;    /* フッター固定のため */
 }
-.site-header {
-  background: #ffffff;
+
+/* ヘッダーやメインを上下に配置する */
+header {
+  background: #fff;
   border-bottom: 1px solid #ccc;
+  padding: 10px;
 }
-.header-inner {
-  max-width: 960px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.5em;
-}
-.site-title {
-  font-size: 1.5rem;
-  color: #0645ad;
-}
-.search-form input[type="text"] {
-  padding: 0.4em;
-  border: 1px solid #aaa;
-}
-.search-form button {
-  padding: 0.4em 0.8em;
-  margin-left: 0.3em;
-}
-.container {
-  display: flex;
-  max-width: 960px;
-  margin: 1em auto;
-}
-.sidebar {
-  width: 200px;
-  background: #ffffff;
-  border: 1px solid #ddd;
+
+main {
+  flex: 1;                   /* コンテンツ部分が残りの高さを埋める */
   padding: 1em;
 }
-.sidebar a {
-  color: #0645ad;
-  text-decoration: underline;
-}
-.content {
-  flex: 1;
-  margin-left: 1em;
-  background: #ffffff;
-  border: 1px solid #ddd;
-  padding: 1em;
-}
-.content h1, .content h2, .content h3 {
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 0.3em;
-  margin-bottom: 0.5em;
-  color: #0645ad;
-}
-a { color: #0645ad; text-decoration: underline; }
-a:hover { color: #0050a0; }
+
+/* フッターを常に最下部に固定 */
 .site-footer {
-  background: #ffffff;
-  border-top: 1px solid #ccc;
   text-align: center;
-  padding: 0.5em;
-  margin-top: 2em;
+  padding: 10px;
+  background: #f9f9f9;
+  border-top: 1px solid #ccc;
+  font-size: 0.9em;
+  color: #555;
 }
-@media (max-width: 768px) {
-  .container { flex-direction: column; }
-  .sidebar { width: 100%; margin-bottom: 1em; }
-  .content { margin-left: 0; }
-}
+
+/* ダークモード対応 */
 @media (prefers-color-scheme: dark) {
-  body { background: #2a2a2a; color: #ddd; }
-  .site-header, .sidebar, .content, .site-footer {
-    background: #333; border-color: #555;
+  body {
+    background: #222;
+    color: #eee;
   }
-  .content h1, .content h2, .content h3 {
-    color: #81aaff; border-bottom-color: #555;
+  header {
+    background: #333;
+    border-bottom: 1px solid #555;
   }
-  a { color: #9acaf7; }
-  a:hover { color: #cce5ff; }
+  .site-footer {
+    background: #333;
+    border-top: 1px solid #555;
+    color: #ccc;
+  }
 }
