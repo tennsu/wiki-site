@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>My Wiki</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
+  <header class="site-header">
     <div class="header-inner">
-      <h1>My Wiki</h1>
+      <div class="site-brand">
+        <a href="index.html" class="site-title">My Wiki</a>
+      </div>
+
       <nav class="main-nav">
         <a href="edit.html" class="btn">新規作成</a>
         <a href="latest.html" class="btn">最新記事</a>
@@ -17,12 +20,15 @@
     </div>
   </header>
 
-  <main>
-    <p>ようこそ My Wiki へ。ここでは記事を自由に作成・閲覧できます。</p>
+  <main class="site-main">
+    <div class="container">
+      <p>ようこそ My Wiki へ。ここでは記事を自由に作成・閲覧できます。</p>
+      <!-- 必要なら記事一覧などここに入れる -->
+    </div>
   </main>
 
-  <footer>
-    <p>© 2025 My Wiki</p>
+  <footer class="site-footer">
+    <div class="container">© 2025 My Wiki</div>
   </footer>
 </body>
 </html>
