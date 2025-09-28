@@ -1,10 +1,8 @@
-// Supabase クライアントを読み込み
-// supabaseClient.js には `export const supabase = createClient(...)` がある前提
+// supabaseClient.js には supabase オブジェクトが定義されている前提
 (async () => {
   const list = document.getElementById('latestList');
 
   try {
-    // updated_at の降順で最新10件を取得
     const { data, error } = await supabase
       .from('articles')
       .select('id, title, updated_at')
@@ -17,7 +15,6 @@
       return;
     }
 
-    // リスト生成
     list.innerHTML = '';
     data.forEach(row => {
       const li = document.createElement('li');
