@@ -1,183 +1,97 @@
-/* =========================
-   ベーススタイル
-========================= */
-body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  line-height: 1.6;
+/* ----------------------------
+   ベース・レイアウト
+   ---------------------------- */
+:root {
+  --max-width: 1100px;
+  --accent: #3366cc;
+  --muted: #f1f1f1;
+  --text: #202122;
+}
+
+* { box-sizing: border-box; }
+
+html,body {
+  height: 100%;
   margin: 0;
-  padding: 0;
-  background: #f6f6f6;
-  color: #202122;
+  font-family: "Hiragino Kaku Gothic ProN","Meiryo",sans-serif;
+  color: var(--text);
+  background: #fafafa;
 }
 
-header, footer {
-  background: #f8f9fa;
-  border-bottom: 1px solid #a2a9b1;
-  padding: 10px 20px;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 1.6em;
-  color: #3366cc;
-}
-
-header nav a {
-  margin-right: 15px;
-  text-decoration: none;
-  color: #3366cc;
-}
-
-header nav a:hover {
-  text-decoration: underline;
-}
-
-main {
-  padding: 20px;
-  max-width: 1100px;
-  margin: auto;
+/* ===== ヘッダー ===== */
+.site-header {
   background: #fff;
-  box-shadow: 0 0 6px rgba(0,0,0,0.08);
+  border-bottom: 1px solid #e0e0e0;
 }
-
-footer {
-  border-top: 1px solid #a2a9b1;
-  text-align: center;
-  font-size: 0.9em;
-  color: #555;
-}
-
-/* リンク共通 */
-a {
-  color: #0645ad;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-
-/* =========================
-   インデックス & 最新記事
-========================= */
-.article-list {
-  list-style: none;
-  padding: 0;
-}
-.article-list li {
-  border-bottom: 1px solid #ddd;
-  padding: 8px 0;
-}
-.article-list li:last-child {
-  border-bottom: none;
-}
-
-/* =========================
-   編集ページレイアウト
-========================= */
-.editor-wrapper {
+.header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
   display: flex;
-  gap: 20px;
-  padding: 20px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 16px;
+  gap: 12px;
 }
 
-.editor-pane {
-  flex: 3;
-  min-width: 0;
+/* ブランド（左） */
+.site-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
 }
 
-.title-input {
+/* ナビ（右） */
+.main-nav {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.main-nav .btn {
+  display: inline-block;
+  padding: 8px 12px;
+  background: #efefef;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  color: #222;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.main-nav .btn:hover {
+  background: #e2e2e2;
+}
+
+/* ===== メイン ===== */
+.site-main {
+  min-height: calc(100vh - 140px); /* header+footerのおおよその高さ差分 */
+  padding: 28px 16px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.container {
+  max-width: var(--max-width);
   width: 100%;
-  font-size: 1.4em;
-  margin-bottom: 10px;
-  padding: 6px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-#editor {
-  height: 500px;
-  background: #fff;
-  border: 1px solid #ccc;
-}
-
-.infobox-preview {
-  flex: 1;
-  background: #f8f8f8;
-  border: 1px solid #ccc;
-  padding: 10px;
-  max-height: 600px;
-  overflow-y: auto;
-}
-
-.infobox-preview h2 {
-  font-size: 1.1em;
-  border-bottom: 1px solid #ddd;
-  margin-top: 0;
-}
-
-/* Quill ツールバー調整 */
-.ql-toolbar {
-  border: 1px solid #ccc;
-  border-bottom: none;
-}
-.ql-container {
-  border: 1px solid #ccc;
-}
-
-/* =========================
-   記事ページ
-========================= */
-.article-content {
-  max-width: 800px;
-  margin: auto;
+  background: white;    /* コンテンツカードとして中央に白い箱 */
   padding: 20px;
+  border: 1px solid #ececec;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+}
+
+/* ===== フッター ===== */
+.site-footer {
+  border-top: 1px solid #e0e0e0;
   background: #fff;
+  padding: 12px 0;
+  color: #666;
 }
+.site-footer .container { max-width: var(--max-width); margin: 0 auto; }
 
-.article-content h1 {
-  border-bottom: 1px solid #a2a9b1;
-  padding-bottom: 5px;
-}
-
-/* =========================
-   ボタン汎用
-========================= */
-button,
-input[type="submit"] {
-  background: #3366cc;
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-button:hover,
-input[type="submit"]:hover {
-  background: #254b8a;
-}
-
-/* =========================
-   ダークモード対応
-========================= */
-@media (prefers-color-scheme: dark) {
-  body {
-    background: #1e1e1e;
-    color: #eee;
-  }
-  header, footer, main {
-    background: #2a2a2a;
-    border-color: #555;
-  }
-  a {
-    color: #6ca0ff;
-  }
-  .title-input, #editor, .infobox-preview {
-    background: #333;
-    color: #eee;
-    border-color: #555;
-  }
-  button,
-  input[type="submit"] {
-    background: #4a7dfc;
-  }
+/* ===== レスポンシブ ===== */
+@media (max-width: 720px) {
+  .header-inner { padding: 12px; }
+  .site-title { font-size: 1.25rem; }
+  .main-nav .btn { padding: 7px 10px; font-size: 0.9rem; }
+  .container { padding: 14px; }
 }
