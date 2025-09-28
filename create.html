@@ -1,0 +1,36 @@
+ <!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>新規作成 | My Wiki</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="site-title">My Wiki</a>
+    <nav class="main-nav">
+      <a href="latest.html" class="btn">最新記事</a>
+    </nav>
+  </div>
+</header>
+
+<main class="site-main">
+  <div class="container">
+    <h1>新規記事作成</h1>
+    <form id="create-form">
+      <label>タイトル
+        <input type="text" id="title" required>
+      </label>
+      <div id="editor" class="quill-editor"></div>
+      <button type="submit" class="btn-primary">投稿</button>
+    </form>
+  </div>
+</main>
+
+<footer class="site-footer">© 2025 My Wiki</footer>
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script src="js/create.js"></script>
+</body>
+</html>
