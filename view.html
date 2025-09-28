@@ -1,40 +1,29 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Wiki - メインページ</title>
+  <meta charset="utf-8">
+  <title>記事表示 | My Wiki</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="index.html" class="logo-link">
-        <span class="site-title">My Wiki</span>
-      </a>
-      <form class="search-form" action="search.html">
-        <input type="text" name="q" placeholder="検索">
-        <button type="submit">検索</button>
-      </form>
-    </div>
-  </header>
-  <div class="container">
-    <aside class="sidebar">
-      <nav>
-        <ul>
-          <li><a href="index.html">メインページ</a></li>
-          <li><a href="new.html">新規作成</a></li>
-          <li><a href="search.html">検索</a></li>
-        </ul>
-      </nav>
-    </aside>
-    <main class="content">
-      <h1>記事表示ページ</h1>
-      <p>ここに記事本文が入ります。</p>
-    </main>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="site-title">My Wiki</a>
+    <nav class="main-nav">
+      <a href="create.html" class="btn">新規作成</a>
+      <a href="latest.html" class="btn">最新記事</a>
+    </nav>
   </div>
-  <footer class="site-footer">
-    <p>© 2025 My Wiki</p>
-  </footer>
+</header>
+
+<main class="site-main">
+  <div class="container">
+    <h1 id="article-title"></h1>
+    <div id="article-content" class="article-content"></div>
+  </div>
+</main>
+
+<footer class="site-footer">© 2025 My Wiki</footer>
+<script src="js/view.js"></script>
 </body>
 </html>
