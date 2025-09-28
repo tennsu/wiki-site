@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>最新記事</title>
+  <meta charset="utf-8">
+  <title>最新記事 | My Wiki</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>最新記事</h1>
-    <nav>
-      <a href="index.html">トップ</a>
-      <a href="edit.html">新規作成</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="site-title">My Wiki</a>
+    <nav class="main-nav">
+      <a href="create.html" class="btn">新規作成</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <main class="latest-container">
-    <ul id="latestList">読み込み中…</ul>
-  </main>
+<main class="site-main">
+  <div class="container">
+    <h1>最新記事</h1>
+    <ul id="latest-list"></ul>
+  </div>
+</main>
 
-  <footer>
-    &copy; 2025 My Wiki
-  </footer>
-
-  <script src="supabaseClient.js"></script>
-  <script src="latest.js"></script>
+<footer class="site-footer">© 2025 My Wiki</footer>
+<script src="js/latest.js"></script>
 </body>
 </html>
