@@ -1,44 +1,38 @@
-// Quill初期化
-const quill = new Quill('#quillEditor', {
+const quill = new Quill('#editor', {
   theme: 'snow',
-  placeholder: '本文を入力してください…\n\n例:\n{{infobox\nname:サンプル\nphoto:sample.jpg\n}}\n',
-  modules: {
-    toolbar: '#wikiToolbar'
-  }
+  modules: { toolbar: '#toolbar' }
 });
 
-const preview = document.getElementById('infoboxPreview');
+// プレビュー更新
+quill.on('text-change', updatePreview);
 
-// 本文から {{infobox ...}} ブロックを探してプレビュー
-function updateInfobox() {
+function updatePreview() {
   const text = quill.getText();
-  const match = text.match(/\{\{infobox([\s\S]*?)\}\}/i);
-  if (!match) {
-    preview.textContent = '本文内 {{infobox ...}} を解析して表示';
+  // 簡易的に {{Infobox ...}} を抜き出して右側に表示
+  const match = text.match(/\{\{Infobox([\s\S]*?)\}\}/i);
+  document.getElementById('infoboxContent').textContent =
+    match ? match[0] : 'インフォボックスはまだありません';
+}
+
+// 保存処理
+document.getElementById('saveBtn').addEventListener('click', async () => {
+  const title = document.getElementById('titleInput').value.trim();
+  const content = quill.root.innerHTML;
+
+  if (!title) {
+    alert('タイトルを入力してください');
     return;
   }
 
-  // 行ごとに key:value を抽出
-  const lines = match[1].split('\n');
-  let html = '<div class="infobox">';
-  lines.forEach(l => {
-    const [key, ...rest] = l.split(':');
-    if (key && rest.length) {
-      html += `<div class="info-row"><strong>${key.trim()}</strong>: ${rest.join(':').trim()}</div>`;
-    }
-  });
-  html += '</div>';
-  preview.innerHTML = html;
-}
+  const { error } = await supabase
+    .from('articles')
+    .insert([{ title, content }]);
 
-// 入力のたびに更新
-quill.on('text-change', updateInfobox);
-
-// 保存処理（バックエンド連携はここに追加）
-document.getElementById('editForm').addEventListener('submit', e => {
-  e.preventDefault();
-  const title = document.getElementById('title').value.trim();
-  const bodyHtml = quill.root.innerHTML;
-  console.log({ title, bodyHtml });
-  alert('記事を保存しました（コンソールに出力）');
+  if (error) {
+    console.error(error);
+    alert('保存に失敗しました');
+  } else {
+    alert('保存しました');
+    location.href = 'latest.html';
+  }
 });
