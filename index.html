@@ -1,34 +1,28 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8">
   <title>My Wiki</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="header-inner">
-      <div class="site-brand">
-        <a href="index.html" class="site-title">My Wiki</a>
-      </div>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="site-title">My Wiki</a>
+    <nav class="main-nav">
+      <a href="create.html" class="btn">新規作成</a>
+      <a href="latest.html" class="btn">最新記事</a>
+    </nav>
+  </div>
+</header>
 
-      <nav class="main-nav">
-        <a href="edit.html" class="btn">新規作成</a>
-        <a href="latest.html" class="btn">最新記事</a>
-      </nav>
-    </div>
-  </header>
+<main class="site-main">
+  <div class="container">
+    <h1>ようこそ My Wiki へ</h1>
+    <p>左上のメニューから記事を作成・編集できます。</p>
+  </div>
+</main>
 
-  <main class="site-main">
-    <div class="container">
-      <p>ようこそ My Wiki へ。ここでは記事を自由に作成・閲覧できます。</p>
-      <!-- 必要なら記事一覧などここに入れる -->
-    </div>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">© 2025 My Wiki</div>
-  </footer>
+<footer class="site-footer">© 2025 My Wiki</footer>
 </body>
 </html>
