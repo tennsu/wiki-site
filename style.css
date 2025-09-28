@@ -1,103 +1,79 @@
+/* =========================
+   ベーススタイル
+========================= */
 body {
-  font-family: sans-serif;
-  background: #f8f8f8;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.6;
   margin: 0;
   padding: 0;
+  background: #f6f6f6;
+  color: #202122;
 }
 
-header {
-  background: #fff;
-  border-bottom: 1px solid #ccc;
+header, footer {
+  background: #f8f9fa;
+  border-bottom: 1px solid #a2a9b1;
   padding: 10px 20px;
 }
 
-.editor-container {
-  display: flex;
-  gap: 20px;
-  padding: 20px;
+header h1 {
+  margin: 0;
+  font-size: 1.6em;
+  color: #3366cc;
 }
 
-form {
-  flex: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-#title {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 6px;
-  font-size: 1em;
-}
-
-#quillEditor {
-  height: 350px;
-  background: #fff;
-  border: 1px solid #ccc;
-}
-
-button[type="submit"] {
-  padding: 8px 16px;
-  font-size: 1em;
-}
-
-#wikiToolbar {
-  border: 1px solid #ccc;
-  border-bottom: none;
-  background: #f8f8f8;
-  padding: 4px;
-  display: flex;
-  gap: 4px;
-  align-items: center;
-}
-
-.infobox-preview {
-  flex: 1;
-  background: #fff;
-  border: 1px solid #ccc;
-  padding: 10px;
-  max-width: 250px;
-}
-.infobox {
-  border: 1px solid #aaa;
-  background: #fdfdfd;
-  padding: 8px;
-}
-.info-row {
-  border-bottom: 1px solid #ddd;
-  padding: 4px 0;
-}
-.latest-container {
-  padding: 20px;
-}
-
-#latestList {
-  list-style: none;
-  padding-left: 0;
-}
-
-#latestList li {
-  margin: 8px 0;
-  padding: 6px 0;
-  border-bottom: 1px solid #ddd;
-}
-
-#latestList a {
-  font-weight: bold;
-  color: #0645ad;
+header nav a {
+  margin-right: 15px;
   text-decoration: none;
+  color: #3366cc;
 }
-#latestList a:hover {
+
+header nav a:hover {
   text-decoration: underline;
 }
 
-.latest-date {
-  color: #666;
-  margin-left: 6px;
-  font-size: 0.9em;
+main {
+  padding: 20px;
+  max-width: 1100px;
+  margin: auto;
+  background: #fff;
+  box-shadow: 0 0 6px rgba(0,0,0,0.08);
 }
-/* === 編集ページレイアウト === */
+
+footer {
+  border-top: 1px solid #a2a9b1;
+  text-align: center;
+  font-size: 0.9em;
+  color: #555;
+}
+
+/* リンク共通 */
+a {
+  color: #0645ad;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   インデックス & 最新記事
+========================= */
+.article-list {
+  list-style: none;
+  padding: 0;
+}
+.article-list li {
+  border-bottom: 1px solid #ddd;
+  padding: 8px 0;
+}
+.article-list li:last-child {
+  border-bottom: none;
+}
+
+/* =========================
+   編集ページレイアウト
+========================= */
 .editor-wrapper {
   display: flex;
   gap: 20px;
@@ -114,6 +90,8 @@ button[type="submit"] {
   font-size: 1.4em;
   margin-bottom: 10px;
   padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 #editor {
@@ -135,4 +113,71 @@ button[type="submit"] {
   font-size: 1.1em;
   border-bottom: 1px solid #ddd;
   margin-top: 0;
+}
+
+/* Quill ツールバー調整 */
+.ql-toolbar {
+  border: 1px solid #ccc;
+  border-bottom: none;
+}
+.ql-container {
+  border: 1px solid #ccc;
+}
+
+/* =========================
+   記事ページ
+========================= */
+.article-content {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  background: #fff;
+}
+
+.article-content h1 {
+  border-bottom: 1px solid #a2a9b1;
+  padding-bottom: 5px;
+}
+
+/* =========================
+   ボタン汎用
+========================= */
+button,
+input[type="submit"] {
+  background: #3366cc;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:hover,
+input[type="submit"]:hover {
+  background: #254b8a;
+}
+
+/* =========================
+   ダークモード対応
+========================= */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #1e1e1e;
+    color: #eee;
+  }
+  header, footer, main {
+    background: #2a2a2a;
+    border-color: #555;
+  }
+  a {
+    color: #6ca0ff;
+  }
+  .title-input, #editor, .infobox-preview {
+    background: #333;
+    color: #eee;
+    border-color: #555;
+  }
+  button,
+  input[type="submit"] {
+    background: #4a7dfc;
+  }
 }
